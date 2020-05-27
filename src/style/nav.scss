@@ -1,0 +1,103 @@
+@import "vars.scss";
+
+.logoContainer {
+	display: flex;
+}
+
+.navContainer {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	max-width: 1020px;
+	margin: 0 auto;
+	transition: all 0.2s ease 0s;
+
+	.right {
+		position: absolute;
+		right: 1%;
+		top: 50%;
+		transform: translateY(-50%);
+
+		.rightNav {
+			display: flex;
+			align-items: center;
+
+			li {
+				padding: 0 8px;
+			}
+		}
+	}
+
+	.branding {
+		position: absolute;
+		left: 1%;
+		transform: translateY(-50%);
+		top: 50%;
+
+		.logo {
+			float: left;
+		}
+	}
+
+	ul>li>.active {
+		color: $logo;
+
+		&::after {
+			display: table;
+			clear: both;
+			content: "";
+		}
+	}
+
+	svg {
+		vertical-align: middle;
+	}
+
+	.rightNav {
+		&::after {
+			display: table;
+			clear: both;
+			content: "";
+		}
+	}
+}
+
+.nav {
+	display: flex;
+	justify-content: center;
+
+	:global {
+		ul>li>.active {
+			color: $logo;
+
+			&::after {
+				display: table;
+				clear: both;
+				content: "";
+			}
+		}
+	}
+
+	svg {
+		vertical-align: middle;
+	}
+
+	ul>li {
+		display: inline-block;
+
+		>a {
+			outline: 0;
+		}
+	}
+}
+
+.nav {
+	ul>li {
+		padding: 0 10px;
+		letter-spacing: 1px;
+
+		>a {
+			line-height: 35px;
+		}
+	}
+}

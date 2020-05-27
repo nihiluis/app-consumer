@@ -1,0 +1,25 @@
+@import "vars.scss";
+
+.avatar {
+	width: 96px;
+	height: 96px;
+
+	p {
+		font-weight: 700;
+		font-size: 28px;
+	}
+}
+
+.miniAvatar, .avatar {
+	border-radius: 100%;
+	background-color: $bg-diff;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.miniAvatar {
+	width: 24px;
+	height: 24px;
+}

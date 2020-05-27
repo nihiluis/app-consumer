@@ -1,0 +1,86 @@
+$input-font-size: 14px;
+
+$text-standard: #283747;
+$text-light: #ffffff;
+$text-medium: #646b75;
+$text-medium-alternative: #aebcc6;
+$text-dark: #4a4a4a;
+$text-highlight: #2d9bc6;
+$text-highlight-alternative:#2d9bc6;
+/* bg */
+
+$bg-content: white;
+$bg-diff-blue: #2bbcff;
+$bg-content-diff: #f4f9ff;
+$bg-content-diff-gray: #f3f3f3;
+$bg-content-diff-light: #fcfcfc;
+$bg-content-diff-dark: #fcfcfc;
+$bg-header: white;
+$bg-dark: #46607b;
+$bg-footer: #46607b;
+$bg-body: #3b5672;
+$bg-body-light: #e4ecf6;
+$bg-diff: #e6f2ff;
+$bg-sidebar: #efefef;
+// lightest #fcfcfc
+$bg-notification: #5f6f80;
+/* links */
+
+$section-border-color: #e6e6e6;
+
+$link: #6a8696;
+$link-light: #daedf7;
+$link-focus: #00b7ff;
+$link-focus-alternative: #c1deff;
+
+$selected: #ffe781;
+/* misc */
+$form-font-size: 14px;
+
+$long: #61ff90;
+$neutral: yellow;
+$short: #cc0000;
+$active: #18562b;
+$inactive: #a3b2bb;
+$warn: yellow;
+$error: red;
+$border-standard: #d8dee2;
+
+$border-rounded-standard: 4px;
+/* logo */
+
+$logo: #ffe56f;
+/* btn */
+
+$btn-standard: #538ea5;
+$btn-hover: #00b7ff;
+
+$btn-alternative: #2d515f;
+$btn-alternative-hover: #00b7ff;
+/* font */
+
+$font-family: 'Nunito',
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+"Roboto",
+"Oxygen",
+"Ubuntu",
+"Cantarell",
+"Fira Sans",
+"Droid Sans",
+"Helvetica Neue",
+sans-serif;
+@mixin color-transition($time) {
+	-webkit-transition: color $time ease;
+	-moz-transition: color $time ease;
+	-ms-transition: color $time ease;
+	transition: color $time ease;
+}
+
+@mixin all-transition($time) {
+	-webkit-transition: all $time ease;
+	-moz-transition: all $time ease;
+	-ms-transition: all $time ease;
+	transition: all $time ease;
+}

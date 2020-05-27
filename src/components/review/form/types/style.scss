@@ -1,0 +1,23 @@
+@import "vars.scss";
+
+.associationContainer {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.associationAttribute {
+	display: table;
+	margin: 0.5rem 0.5rem;
+	font-size: 11px;
+	:global(.btn) {
+		padding: 0.4rem;
+	}
+
+	button {
+		outline: 0;
+	}
+	&.associationActive button {
+		background-color: $btn-hover;
+		
+	}
+}
