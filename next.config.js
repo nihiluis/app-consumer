@@ -35,4 +35,5 @@ module.exports = withPlugins([withTM], {
       path.join(__dirname, "node_modules", "polyvolve-ui", "src", "style"),
     ],
   },
+  assetPrefix: process.env.NODE_ENV === "production" ? "/app-consumer" : "",
 })
