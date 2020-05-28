@@ -6,9 +6,9 @@ cache:
 
 pages:
   script:
-    - yarn install
-    - yarn run build
-    - yarn run export
+    - npm install
+    - npm run build
+    - npm run export
     - mv public public2
     - mkdir public
     - mv out/* public
