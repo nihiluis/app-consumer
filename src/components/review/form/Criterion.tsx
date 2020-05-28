@@ -4,9 +4,12 @@ import { ReviewUserFormValues } from "."
 import RadioBar from "./types/RadioBar"
 import { Line } from "polyvolve-ui/lib"
 import { ReviewCriterion, ReviewCategory, User } from "polyvolve-ui/lib/@types"
-import { getUserName, getUserHimself, getUserHe } from "polyvolve-ui/lib/utils/User"
-
-import * as style from "../style.scss"
+import {
+  getUserName,
+  getUserHimself,
+  getUserHe,
+} from "polyvolve-ui/lib/utils/User"
+import { reviewStyle } from "../../../lib/reexports"
 
 interface Props {
   user: User
@@ -20,7 +23,9 @@ interface Props {
   fieldArrayName: string
 }
 
-export default class ReviewUserCategoryCriterion extends React.Component<Props> {
+export default class ReviewUserCategoryCriterion extends React.Component<
+  Props
+> {
   render(): JSX.Element {
     const { criterion } = this.props
 
@@ -43,17 +48,13 @@ export default class ReviewUserCategoryCriterion extends React.Component<Props> 
   }
 
   renderScale(): JSX.Element {
-    const {
-      criterion,
-      category,
-      isLast,
-      values,
-      setFieldValue,
-    } = this.props
+    const { criterion, isLast, values, setFieldValue } = this.props
 
     return (
       <React.Fragment>
-        <div key={`reviewCriterion-div-${criterion.id}`} className={style.reviewCriterion}>
+        <div
+          key={`reviewCriterion-div-${criterion.id}`}
+          className={reviewStyle.reviewCriterion}>
           <div>
             <h3>{criterion.name}</h3>
             <p>{this.getCriterionDescription()}</p>
@@ -63,11 +64,12 @@ export default class ReviewUserCategoryCriterion extends React.Component<Props> 
             type="scale"
             numberOfItems={7}
             value={values[criterion.id]}
-            onChange={(newValue) => {
+            onChange={newValue => {
               setFieldValue(`[${criterion.id}]`, newValue)
-            }} />
+            }}
+          />
         </div>
-        {!isLast && <Line className={style.lineCriterion} />}
+        {!isLast && <Line className={reviewStyle.lineCriterion} />}
       </React.Fragment>
     )
   }
@@ -80,12 +82,14 @@ export default class ReviewUserCategoryCriterion extends React.Component<Props> 
       values,
       setFieldValue,
       handleBlur,
-      handleChange
+      handleChange,
     } = this.props
 
     return (
       <React.Fragment>
-        <div key={`reviewCriterion-div-${criterion.id}`} className={style.reviewCriterion}>
+        <div
+          key={`reviewCriterion-div-${criterion.id}`}
+          className={reviewStyle.reviewCriterion}>
           <div>
             <h3>{criterion.name}</h3>
             <p>{this.getCriterionDescription()}</p>
@@ -94,9 +98,10 @@ export default class ReviewUserCategoryCriterion extends React.Component<Props> 
             name={`[${criterion.id}]`}
             onChange={handleChange}
             onBlur={handleBlur}
-            value={values[criterion.id]} />
+            value={values[criterion.id]}
+          />
         </div>
-        {!isLast && <Line className={style.lineCriterion} />}
+        {!isLast && <Line className={reviewStyle.lineCriterion} />}
       </React.Fragment>
     )
   }

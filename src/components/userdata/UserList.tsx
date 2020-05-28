@@ -3,10 +3,8 @@ import cx from "classnames"
 import Link from "next/link"
 import { Avatar } from "polyvolve-ui/lib"
 import { ReviewUserValueContainer } from "polyvolve-ui/lib/@types"
+import { userStyle, style } from "../../lib/reexports"
 
-import * as style from "./style.scss"
-import * as globalStyle from "../../style/style.scss"
-import * as avatarStyle from "../../style/avatar.scss"
 
 interface Props {
   reviewUsers: ReviewUserValueContainer[]
@@ -18,7 +16,7 @@ const UsersForReviewList: React.FunctionComponent<Props> = props => {
 
   return (
     <React.Fragment>
-      <h3 className={style.usersTitle}>Persons to review</h3>
+      <h3 className={userStyle.usersTitle}>Persons to review</h3>
       <div>
         {reviewUsers.map(reviewUser => <UserItem
           key={"item-" + reviewUser.reviewedUser.id}
@@ -38,21 +36,21 @@ const UserItem: React.FunctionComponent<ItemProps> = props => {
   const { reviewUser, hash } = props
   const { reviewedUser } = reviewUser
 
-  const classes = cx(style.userListItem, { [style.completed]: reviewUser.markedCompleted })
+  const classes = cx(userStyle.userListItem, { [userStyle.completed]: reviewUser.markedCompleted })
   const gradientStyle = "" // `rgba(${user.color.r},${user.color.g}, ${user.color.b}, 0.15)`
 
   return (
     <div className={classes} style={{ background: gradientStyle }}>
-      <Avatar url={reviewedUser.avatar} size={24} className={style.miniAvatar} name={reviewedUser.surname} />
+      <Avatar url={reviewedUser.avatar} size={24} className={userStyle.miniAvatar} name={reviewedUser.surname} />
       <Link href={{ pathname: '/review', query: { id: hash } }}>
         <a>
           {reviewedUser.name + " " + reviewedUser.surname}
         </a>
       </Link>
       <p>{reviewedUser.position}</p>
-      <div className={style.userDueAtList}>
-        {!reviewUser.markedCompleted && <p className={globalStyle.short}>Not completed</p>}
-        {reviewUser.markedCompleted && <p className={globalStyle.long}>Completed</p>}
+      <div className={userStyle.userDueAtList}>
+        {!reviewUser.markedCompleted && <p className={style.short}>Not completed</p>}
+        {reviewUser.markedCompleted && <p className={style.long}>Completed</p>}
       </div>
     </div>
   )

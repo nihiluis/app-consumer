@@ -1,17 +1,17 @@
-module.exports = (api) => {
+module.exports = api => {
   api.cache(true)
   return {
-    presets: [
-      'next/babel',
-      '@zeit/next-typescript/babel'
-    ],
+    presets: ["next/babel"],
     plugins: [
-      '@babel/proposal-class-properties',
-      '@babel/proposal-object-rest-spread',
+      "@babel/proposal-class-properties",
+      "@babel/proposal-object-rest-spread",
       "inline-react-svg",
-      ['transform-define', {
-        'process.env.NODE_ENV': process.env.NODE_ENV
-      }]
-    ]
+      [
+        "transform-define",
+        {
+          "process.env.NODE_ENV": process.env.NODE_ENV,
+        },
+      ],
+    ],
   }
 }

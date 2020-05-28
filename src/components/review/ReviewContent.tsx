@@ -3,21 +3,8 @@ import { connect } from "react-redux"
 import { Dispatch, bindActionCreators } from "redux"
 import Router from "next/router"
 import Link from "next/link"
-import {
-  Row,
-  Notification,
-  Error,
-  Load,
-  Wizard,
-  Avatar,
-  Logo,
-  LogoText,
-} from "polyvolve-ui/lib"
-import {
-  NextIcon,
-  BackIcon,
-  HomeIcon,
-} from "polyvolve-ui/lib/icons"
+import { Row, Notification, Error, Wizard, Avatar } from "polyvolve-ui/lib"
+import { NextIcon, BackIcon, HomeIcon } from "polyvolve-ui/lib/icons"
 import {
   ReviewUserValueContainer,
   ReviewMaster,
@@ -26,13 +13,11 @@ import {
   Review,
 } from "polyvolve-ui/lib/@types"
 
-import ReviewNavigation from "./navigation"
 import { RootState } from "../../redux"
 import { ReviewActions } from "../../redux/review"
 import { DataGlobalActions } from "../../redux/overview"
 import ReviewUserFormWrapper from "./form"
-import { globalStyle, cx } from "../../lib/reexports"
-import * as style from "./style.scss"
+import { style, cx, reviewStyle } from "../../lib/reexports"
 
 interface Props {
   loading: boolean
@@ -170,12 +155,12 @@ class ReviewContent extends React.Component<Props> {
 
     return (
       <React.Fragment>
-        <div className={globalStyle.content}>
-          <Row className={style.row}>
+        <div className={style.content}>
+          <Row className={reviewStyle.row}>
             {!reviewUser && !loading && initialized && (
               <Error>Unable to find users which can be reviewed.</Error>
             )}
-            <div className={style.reviewIconNavigationBar}>
+            <div className={reviewStyle.reviewIconNavigationBar}>
               <Link href={`/?id=${hash}`}>
                 <HomeIcon
                   size={{ width: 16, height: 16 }}
@@ -183,15 +168,15 @@ class ReviewContent extends React.Component<Props> {
                 />
               </Link>
             </div>
-            <div className={style.reviewUserNavigationHeader}>
+            <div className={reviewStyle.reviewUserNavigationHeader}>
               <p>
                 <strong>Reviewing</strong>
               </p>
             </div>
-            <div className={style.userNav}>
-              <div className={style.next}>
+            <div className={reviewStyle.userNav}>
+              <div className={reviewStyle.next}>
                 {previousUser && (
-                  <div className={style.reviewUserNavigation}>
+                  <div className={reviewStyle.reviewUserNavigation}>
                     <BackIcon
                       size={{ width: 16, height: 16 }}
                       onClick={() => this.updateUser(activeUserIdx - 1)}
@@ -199,7 +184,7 @@ class ReviewContent extends React.Component<Props> {
                     <Avatar
                       url={previousUser.avatar}
                       size={24}
-                      className={style.miniAvatar}
+                      className={reviewStyle.miniAvatar}
                       name={previousUser.surname}
                     />
                     <a>{previousUser.name + " " + previousUser.surname}</a>
@@ -207,15 +192,15 @@ class ReviewContent extends React.Component<Props> {
                 )}
               </div>
               <div>
-                <div className={style.reviewNavigation}>
-                  <div className={style.reviewUserNavigationInfo}>
+                <div className={reviewStyle.reviewNavigation}>
+                  <div className={reviewStyle.reviewUserNavigationInfo}>
                     {!user && <Error>Unable to find User!</Error>}
                     {user && (
                       <React.Fragment>
                         <Avatar
                           url={user.avatar}
                           size={24}
-                          className={style.miniAvatar}
+                          className={reviewStyle.miniAvatar}
                           name={user.surname}
                         />
                         <p>{user.name + " " + user.surname}</p>
@@ -225,13 +210,17 @@ class ReviewContent extends React.Component<Props> {
                   </div>
                 </div>
               </div>
-              <div className={style.next}>
+              <div className={reviewStyle.next}>
                 {nextUser && (
-                  <div className={cx(style.reviewUserNavigation, style.last)}>
+                  <div
+                    className={cx(
+                      reviewStyle.reviewUserNavigation,
+                      reviewStyle.last
+                    )}>
                     <Avatar
                       url={nextUser.avatar}
                       size={24}
-                      className={style.miniAvatar}
+                      className={reviewStyle.miniAvatar}
                       name={nextUser.surname}
                     />
                     <a>{nextUser.name + " " + nextUser.surname}</a>
@@ -244,8 +233,8 @@ class ReviewContent extends React.Component<Props> {
               </div>
             </div>
             {reviewUser && user && (
-              <div className={globalStyle.reviewContainer}>
-                <div className={globalStyle.reviewInner}>
+              <div className={style.reviewContainer}>
+                <div className={style.reviewInner}>
                   <Wizard
                     maxPage={schema.categories.length}
                     render={({ page, maxPage }, switchPage) => (

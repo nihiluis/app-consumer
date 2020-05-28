@@ -14,10 +14,10 @@ import {
 } from "polyvolve-ui/lib"
 //import AuthActions from "../store/auth"
 
-import * as navStyle from "../../style/nav.scss"
 import * as homeIcon from "../../assets/icons/home.svg"
 import * as settingsIcon from "../../assets/icons/settings.svg"
 import * as refreshIcon from "../../assets/icons/refresh.svg"
+import { navStyle } from "../../lib/reexports"
 
 interface Props {
   authenticated?: boolean

@@ -3,9 +3,8 @@ import Link from "next/link"
 
 import { Avatar, Button } from "polyvolve-ui/lib"
 
-import * as style from "./style.scss"
-import * as globalStyle from "../../style/style.scss"
 import { ReviewUserValueContainer } from "polyvolve-ui/lib/@types"
+import { userStyle } from "../../lib/reexports"
 
 interface Props {
   reviewUsers: ReviewUserValueContainer[]
@@ -25,8 +24,8 @@ const UsersForReviewList: React.FC<Props> = props => {
 
   return (
     <React.Fragment>
-      <h3 className={style.usersTitle}>Users for review</h3>
-      <div className={style.usersView}>
+      <h3 className={userStyle.usersTitle}>Users for review</h3>
+      <div className={userStyle.usersView}>
         {usersBase.map(reviewUser => (
           <UserItem
             key={"item-" + reviewUser.reviewedUser.id}
@@ -52,30 +51,30 @@ const UserItem: React.FunctionComponent<ItemProps> = props => {
   const gradientStyle = "" //`linear-gradient(to bottom, rgba(${user.color.r},${user.color.g}, ${user.color.b}, 0.15) 0%,rgba(0,0,0,0) 100%)`
 
   return (
-    <div className={style.usersItem}>
+    <div className={userStyle.usersItem}>
       <div
-        className={style.usersItemInner}
+        className={userStyle.usersItemInner}
         style={{ background: gradientStyle }}>
         <Avatar
           url={reviewedUser.avatar}
           size={64}
-          className={style.usersAvatar}
+          className={userStyle.usersAvatar}
           name={reviewedUser.surname}
         />
-        <div className={style.usersName}>
+        <div className={userStyle.usersName}>
           <a>{reviewedUser.name + " " + reviewedUser.surname}</a>
         </div>
-        <div className={style.userPosition}>
+        <div className={userStyle.userPosition}>
           <p>{reviewedUser.position}</p>
         </div>
-        <div className={style.userBottom}>
+        <div className={userStyle.userBottom}>
           <Link
             href={{
               pathname: "/review",
               query: { id: hash, userId: reviewedUser.id },
             }}>
             <a>
-              <Button className={style.reviewButton} name="Review">
+              <Button className={userStyle.reviewButton} name="Review">
                 Review
               </Button>
             </a>

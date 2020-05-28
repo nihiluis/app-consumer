@@ -1,13 +1,12 @@
 import * as React from "react"
 import { Header, Logo, LogoText, Load } from "polyvolve-ui/lib"
-import { Navigation, Footer } from "."
+import { Footer } from "."
 import Head from "next/head"
-import cx from "classnames"
 
-import * as style from "../../style/style.scss"
-import { globalStyle } from "../../lib/reexports"
 import { connect } from "react-redux"
 import { RootState } from "../../redux"
+import { SITE_NAME } from "../../constants/env"
+import { componentStyle } from "../../lib/reexports"
 
 interface Props {
   loading: boolean
@@ -20,16 +19,17 @@ const Layout: React.FunctionComponent<Props> = props => (
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
+      <title>{SITE_NAME}</title>
     </Head>
     <Header>
-      <div className={globalStyle.logoHeader}>
+      <div className={componentStyle.logoHeader}>
         {props.loading && <Load size={24} />}
-        {!props.loading && <Logo className={globalStyle.logo} size={24} />}
+        {!props.loading && <Logo className={componentStyle.logo} size={24} />}
         <LogoText text="Polyvolve" size={24} />
       </div>
     </Header>
     <main>
-      <div className={style.pageContent}>{props.children}</div>
+      <div className={componentStyle.pageContent}>{props.children}</div>
     </main>
     <Footer />
   </div>

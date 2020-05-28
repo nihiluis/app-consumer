@@ -1,0 +1,70 @@
+@import "vars.scss";
+
+.footer {
+  transition: all 0.2s ease 0s;
+  padding: 1rem;
+}
+
+.footerActive {
+}
+
+.footerTitle {
+  text-align: center;
+  padding-bottom: 10px;
+
+  h1 {
+    font-size: 22px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: $logo;
+  }
+
+  h3 {
+    color: $text-highlight-alternative;
+    font-size: 11px;
+  }
+
+  .footerLogo {
+    margin: 0 auto;
+    margin-bottom: 4px;
+  }
+}
+
+.infoMenu {
+  text-align: center;
+}
+
+.mainMenu {
+  text-align: center;
+}
+
+.copyright {
+  text-align: center;
+  margin-top: 12px;
+  color: $text-dark;
+}
+
+.smBar {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.copyright::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 1px;
+  background-color: $link;
+  margin: 10px auto;
+}
+
+.logoHeader {
+  display: grid;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.logo {
+  margin: 0 auto;
+}

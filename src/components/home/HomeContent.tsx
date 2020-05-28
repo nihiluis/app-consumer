@@ -1,20 +1,13 @@
 import * as React from "react"
 import { connect } from "react-redux"
-import * as moment from "moment"
+import moment from "moment"
 import Link from "next/link"
 
 import { RootState } from "../../redux"
-import {
-  Notification,
-  Row,
-  Load,
-  Error,
-  Button,
-} from "polyvolve-ui/lib"
+import { Notification, Row, Load, Error, Button } from "polyvolve-ui/lib"
 import UserList from "../userdata/UserList"
 
-import * as style from "./style.scss"
-import { globalStyle } from "../../lib/reexports"
+import { style, homeStyle } from "../../lib/reexports"
 import {
   ReviewMaster,
   User,
@@ -49,7 +42,7 @@ class HomeContent extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    document.body.classList.add(style.blank)
+    document.body.classList.add(homeStyle.blank)
 
     const { dataHashId, actions } = this.props
 
@@ -60,7 +53,7 @@ class HomeContent extends React.Component<Props, State> {
   }
 
   componentWillUnmount() {
-    document.body.classList.remove(style.blank)
+    document.body.classList.remove(homeStyle.blank)
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -134,26 +127,26 @@ class HomeContent extends React.Component<Props, State> {
 
     return (
       <React.Fragment>
-        <Row className={style.row}>
+        <Row className={homeStyle.row}>
           <Notification
             type="warning"
             table={true}
-            className={style.notification}>
+            className={homeStyle.notification}>
             This is a prototype of Polyvolve. Functionality not guaranteed.
           </Notification>
           {!dataHashId && (
-            <Error className={globalStyle.alignCenter}>Invalid link.</Error>
+            <Error className={style.alignCenter}>Invalid link.</Error>
           )}
           {loading && <Load />}
-          {error && <Error className={globalStyle.alignCenter}>{error}</Error>}
+          {error && <Error className={style.alignCenter}>{error}</Error>}
           {!loading && !reviewingUser && (
-            <Error className={globalStyle.alignCenter}>
+            <Error className={style.alignCenter}>
               Unable to retrieve user for this link. Sorry!
             </Error>
           )}
           {!loading && reviewingUser && (
-            <div className={style.greeting}>
-              <p className={style.hiText}>
+            <div className={homeStyle.greeting}>
+              <p className={homeStyle.hiText}>
                 Hi{" "}
                 <strong>
                   {reviewingUser.name} {reviewingUser.surname}
@@ -167,14 +160,14 @@ class HomeContent extends React.Component<Props, State> {
             </div>
           )}
           {!loading && !master && (
-            <Error className={globalStyle.alignCenter}>
+            <Error className={style.alignCenter}>
               Unable to retrieve the data for this link. You can't perform your
               Review for now. Please report it to the responsible person. Sorry!
             </Error>
           )}
           {!loading && master && (
             <div>
-              <p className={style.reviewTitle}>
+              <p className={homeStyle.reviewTitle}>
                 The Review concerns the time range from{" "}
                 <strong>{periodStartFormatted}</strong> to{" "}
                 <strong>{periodEndFormatted}</strong> and is due at{" "}
@@ -187,7 +180,7 @@ class HomeContent extends React.Component<Props, State> {
                     query: { id: dataHashId, userId: reviewUsers[0].id },
                   }}>
                   <a>
-                    <Button className={style.reviewButton} name="Review">
+                    <Button className={homeStyle.reviewButton} name="Review">
                       Start!
                     </Button>
                   </a>

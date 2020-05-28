@@ -1,10 +1,8 @@
 import * as React from "react"
-import { Header } from "polyvolve-ui/lib"
-import { Navigation, Footer } from "."
+import {Footer } from "."
 import Head from "next/head"
-import cx from "classnames"
+import { style } from "../../lib/reexports"
 
-import * as style from "../../style/style.scss"
 
 const Layout: React.FunctionComponent = props =>
   <div id="layout">

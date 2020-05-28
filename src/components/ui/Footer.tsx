@@ -11,8 +11,7 @@ import {
   Logo,
   Footer as GFooter
 } from "polyvolve-ui/lib"
-
-import * as footerStyle from "../../style/component.scss"
+import { componentStyle } from "../../lib/reexports"
 
 interface Props {
   ownerName: string
@@ -39,13 +38,13 @@ class Footer extends React.Component<Props> {
     const { ownerName, showExtendedUi, enableHide } = this.props
 
     const footerContainerStyle = !enableHide || showExtendedUi ? {} : { opacity: 0 }
-    const footerClasses = cx({ [footerStyle.footerActive]: !enableHide || showExtendedUi },
-      footerStyle.footer)
+    const footerClasses = cx({ [componentStyle.footerActive]: !enableHide || showExtendedUi },
+      componentStyle.footer)
 
     return (
       <GFooter>
         <div className={footerClasses} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} style={footerContainerStyle} >
-          <div className={footerStyle.infoMenu}>
+          <div className={componentStyle.infoMenu}>
             <ul>
               <NavigationItem name="About" />
               <NavigationItem url="/contact" name="Contact" />
@@ -53,7 +52,7 @@ class Footer extends React.Component<Props> {
               <NavigationItem url="/terms" name="Terms & Conditions" />
             </ul>
           </div>
-          <div className={footerStyle.smBar}>
+          <div className={componentStyle.smBar}>
             <ul className="soc">
               {
                 //<SocialIcon type="twitter" link="#" />
@@ -61,7 +60,7 @@ class Footer extends React.Component<Props> {
               }
             </ul>
           </div>
-          <div className={footerStyle.copyright}>
+          <div className={componentStyle.copyright}>
             <p>{`© 2019 ${ownerName}`}</p>
           </div>
         </div>

@@ -1,13 +1,11 @@
 import * as React from "react"
 
 import { ProgressBar } from "polyvolve-ui/lib"
-import { colorToStyle } from "../../../lib/color"
 import { ReviewUserFormValues } from "."
 import Criteria from "./Criteria"
 import { User, ReviewCategory } from "polyvolve-ui/lib/@types";
+import { reviewStyle } from "../../../lib/reexports"
 
-
-import * as style from "../style.scss"
 
 interface Props {
   user: User
@@ -64,11 +62,11 @@ const ReviewCategoryDisplay: React.FunctionComponent<Props> = props => {
       <ProgressBar
         key={`reviewCategory-progressbar-${category.id}`}
         percent={getProgress()}
-        className={style.reviewProgressBar} />
-      <div key={`reviewCategory-div-${category.id}`} className={style.reviewCategoryContainer}>
-        <div key={`reviewCategory-title-${category.id}`} className={style.title}>
+        className={reviewStyle.reviewProgressBar} />
+      <div key={`reviewCategory-div-${category.id}`} className={reviewStyle.reviewCategoryContainer}>
+        <div key={`reviewCategory-title-${category.id}`} className={reviewStyle.title}>
           <h1>{category.name}</h1>
-          <p className={style.descriptionText}>{category.description}</p>
+          <p className={reviewStyle.descriptionText}>{category.description}</p>
         </div>
         <Criteria
           user={user}

@@ -1,17 +1,15 @@
 import * as React from "react"
 import cx from "classnames"
-import { Moment } from "moment"
 import Link from "next/link"
 
 import { Avatar, Error } from "polyvolve-ui/lib"
 
-import * as style from "../style.scss"
-import * as globalStyle from "../../../style/style.scss"
 import { HomeIcon } from "polyvolve-ui/lib/icons"
 import {
   User,
   ReviewUserValueContainer,
 } from "polyvolve-ui/lib/@types"
+import { componentStyle, style } from "../../../lib/reexports"
 
 interface Props {
   user?: User
@@ -57,22 +55,22 @@ export default class ReviewNavigation extends React.Component<Props, State> {
 
     const warn = !reviewUser || !reviewUser.markedCompleted
     const gradientStyle = "" // `linear-gradient(to bottom, rgba(${user.color.r},${user.color.g}, ${user.color.b}, 0.25) 0%,rgba(0,0,0,0) 100%)`
-    const classes = cx(style.reviewNavigationContainer, {
-      [style.notExpanded]: !showExtendedUserInfo && !pinExtendedUserInfo,
+    const classes = cx(componentStyle.reviewNavigationContainer, {
+      [componentStyle.notExpanded]: !showExtendedUserInfo && !pinExtendedUserInfo,
     })
-    const expansionClasses = cx(style.reviewNavigationExpansionContainer, {
-      [style.expanded]: showExtendedUserInfo || pinExtendedUserInfo,
+    const expansionClasses = cx(componentStyle.reviewNavigationExpansionContainer, {
+      [componentStyle.expanded]: showExtendedUserInfo || pinExtendedUserInfo,
     })
 
     return (
       <React.Fragment>
         <div className={classes} onMouseEnter={this.onMouseEnter}>
           <div style={{ background: gradientStyle }}>
-            <div className={style.reviewNavigation}>
+            <div className={componentStyle.reviewNavigation}>
               {!user && showErrors && (
                 <React.Fragment>
                   <span />
-                  <Error className={style.navigationError}>
+                  <Error className={componentStyle.navigationError}>
                     Unable to find a user to review.
                   </Error>
                 </React.Fragment>
@@ -80,7 +78,7 @@ export default class ReviewNavigation extends React.Component<Props, State> {
               <Link href={`/?id=${hash}`}>
                 <HomeIcon size={{ width: 16, height: 16 }} title={"HOMEICON"} />
               </Link>
-              <div className={style.reviewNavigationUserInfo}>
+              <div className={componentStyle.reviewNavigationUserInfo}>
                 <p>
                   <strong>Reviewing</strong>
                 </p>
@@ -90,7 +88,7 @@ export default class ReviewNavigation extends React.Component<Props, State> {
                     <Avatar
                       url={user.avatar}
                       size={24}
-                      className={style.miniAvatar}
+                      className={componentStyle.miniAvatar}
                       name={user.surname}
                     />
                     <p>{user.name + " " + user.surname}</p>
@@ -102,22 +100,22 @@ export default class ReviewNavigation extends React.Component<Props, State> {
           </div>
         </div>
         {!pinExtendedUserInfo && (
-          <div className={style.pinArrow} onClick={this.pin}></div>
+          <div className={componentStyle.pinArrow} onClick={this.pin}></div>
         )}
         <div className={expansionClasses} onMouseLeave={this.onMouseLeave}>
-          <div className={style.reviewNavigationExpansion}>
-            <div className={style.content}>
-              <div className={style.userDueAtList}>
+          <div className={componentStyle.reviewNavigationExpansion}>
+            <div className={componentStyle.content}>
+              <div className={componentStyle.userDueAtList}>
                 <React.Fragment>
                   {(!reviewUser || !reviewUser.markedCompleted) && warn && (
-                    <p className={globalStyle.short}>Not completed</p>
+                    <p className={style.short}>Not completed</p>
                   )}
                   {reviewUser && reviewUser.markedCompleted && (
-                    <p className={globalStyle.long}>Completed</p>
+                    <p className={style.long}>Completed</p>
                   )}
                 </React.Fragment>
               </div>
-              <div className={style.pinButton}>
+              <div className={componentStyle.pinButton}>
                 {pinExtendedUserInfo && <a onClick={this.unpin}>Minimize</a>}
               </div>
             </div>

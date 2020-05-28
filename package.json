@@ -23,10 +23,13 @@
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.22.2",
     "next": "^9.0.0",
+    "next-compose-plugins": "^2.2.0",
+    "next-transpile-modules": "^3.3.0",
     "polyvolve-ui": "https://gitlab.com/polyvolve/ui",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-ga": "^2.5.3",
+    "react-rangeslider": "^2.2.0",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-actions": "^2.6.4",
@@ -34,10 +37,8 @@
     "redux-persist": "^4.9.1",
     "redux-saga": "1.0.2",
     "redux-thunk": "^2.3.0",
-    "webpack-bundle-analyzer": "^3.0.2",
     "resize-observer-polyfill": "^1.5.1",
-    "react-rangeslider": "^2.2.0",
-    "next-transpile-modules": "^3.3.0"
+    "webpack-bundle-analyzer": "^3.0.2"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.6",

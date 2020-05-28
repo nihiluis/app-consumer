@@ -23,6 +23,10 @@ declare module '*.scss' {
   const resource: any
   export = resource
 }
+declare module '*.module.scss' {
+  const resource: any
+  export = resource
+}
 declare module '*.json' {
   const resource: any
   export = resource

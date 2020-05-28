@@ -26,8 +26,7 @@ import { RootState } from "../../redux"
 import { ReviewActions } from "../../redux/review"
 import { DataGlobalActions } from "../../redux/overview"
 import ReviewUserFormWrapper from "./form"
-import { globalStyle } from "../../lib/reexports"
-import * as style from "./style.scss"
+import { style, reviewStyle } from "../../lib/reexports"
 
 interface Props {
   loading: boolean
@@ -191,16 +190,16 @@ class ReviewContent extends React.Component<Props, State> {
           hash={hash}
           showErrors={!loading && initialized}
         />
-        <div className={globalStyle.content}>
-          <Row className={style.row}>
+        <div className={style.content}>
+          <Row className={reviewStyle.row}>
             {loading && <Load />}
             {!reviewUser && !loading && initialized && (
               <Error>Unable to find users which can be reviewed.</Error>
             )}
-            <div className={style.userNav}>
-              <div className={style.next}>
+            <div className={reviewStyle.userNav}>
+              <div className={reviewStyle.next}>
                 {previousUser && (
-                  <div className={style.reviewNavigationUserInfo}>
+                  <div className={reviewStyle.reviewNavigationUserInfo}>
                     <BackIcon
                       size={{ width: 16, height: 16 }}
                       onClick={() => this.updateUser(activeUserIdx - 1)}
@@ -208,20 +207,20 @@ class ReviewContent extends React.Component<Props, State> {
                     <Avatar
                       url={previousUser.avatar}
                       size={24}
-                      className={style.miniAvatar}
+                      className={reviewStyle.miniAvatar}
                       name={previousUser.surname}
                     />
                     <a>{previousUser.name + " " + previousUser.surname}</a>
                   </div>
                 )}
               </div>
-              <div className={style.next}>
+              <div className={reviewStyle.next}>
                 {nextUser && (
-                  <div className={style.reviewNavigationUserInfo}>
+                  <div className={reviewStyle.reviewNavigationUserInfo}>
                     <Avatar
                       url={nextUser.avatar}
                       size={24}
-                      className={style.miniAvatar}
+                      className={reviewStyle.miniAvatar}
                       name={nextUser.surname}
                     />
                     <a>{nextUser.name + " " + nextUser.surname}</a>
@@ -234,8 +233,8 @@ class ReviewContent extends React.Component<Props, State> {
               </div>
             </div>
             {reviewUser && user && (
-              <div className={globalStyle.reviewContainer}>
-                <div className={globalStyle.reviewInner}>
+              <div className={style.reviewContainer}>
+                <div className={style.reviewInner}>
                   <Wizard
                     maxPage={schema.categories.length}
                     render={({ page, maxPage }, switchPage) => (

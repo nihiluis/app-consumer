@@ -8,9 +8,9 @@ import {
 import { ReviewUserFormValues } from "."
 import ReviewCategoryDisplay from "./ReviewCategoryDisplay"
 
-import * as style from "../style.scss"
 import { Error, Button } from "polyvolve-ui/lib"
 import { NextIcon, BackIcon } from "polyvolve-ui/lib/icons"
+import { reviewStyle } from "../../../lib/reexports"
 
 interface Props {
   user: User
@@ -75,7 +75,7 @@ export default class ReviewUserForm extends React.Component<Props> {
     const hasNextPage = page < maxPage && maxPage > 1
 
     return (
-      <form onSubmit={handleSubmit} className={style.form}>
+      <form onSubmit={handleSubmit} className={reviewStyle.form}>
         <FieldArray
           name="reviewUser"
           render={() =>
@@ -94,7 +94,7 @@ export default class ReviewUserForm extends React.Component<Props> {
             ))
           }
         />
-        <div className={style.pageNavOuter}>
+        <div className={reviewStyle.pageNavOuter}>
           {hasPreviousPage && (
             <BackIcon
               onClick={() => switchPage(page - 1)}
@@ -114,8 +114,11 @@ export default class ReviewUserForm extends React.Component<Props> {
           {!hasNextPage && <div style={{ width: 16 }} />}
         </div>
         {saveError && <Error>Unable to save due to {saveError}</Error>}
-        <div className={style.reviewUserButtonBar}>
-          <Button type="submit" name="save" className={style.buttonUserSave}>
+        <div className={reviewStyle.reviewUserButtonBar}>
+          <Button
+            type="submit"
+            name="save"
+            className={reviewStyle.buttonUserSave}>
             Save
           </Button>
         </div>

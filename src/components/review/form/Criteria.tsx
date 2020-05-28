@@ -4,8 +4,8 @@ import { ReviewUserFormValues } from ".";
 import Criterion from "./Criterion"
 import { Line } from "polyvolve-ui/lib"
 
-import * as style from "../style.scss"
 import { ReviewCategory, ReviewCriterionType, User } from "polyvolve-ui/lib/@types";
+import { reviewStyle } from "../../../lib/reexports"
 
 interface Props {
   category: ReviewCategory
@@ -47,8 +47,8 @@ export default class ReviewUserCategoryCriteria extends React.Component<Props> {
     // where do I put the radio bar description, if the criteria are mixed, 
     // radioBar + association. is that allowed? I'd say no.
     return (
-      <div className={style.reviewCriterionContainer}>
-        <Line className={style.line} />
+      <div className={reviewStyle.reviewCriterionContainer}>
+        <Line className={reviewStyle.line} />
         {category.criteria.map((criterion, idx) => {
           const isFirstScaleCriterion = criterion.type === "scale" &&
             (idx === 0 || category.criteria[idx - 1].type !== "scale")
@@ -58,11 +58,11 @@ export default class ReviewUserCategoryCriteria extends React.Component<Props> {
               {isFirstScaleCriterion &&
                 <div
                   key={`reviewCategory-radioBarContainer-${criterion.id}`}
-                  className={style.radioBarDescriptionContainer}>
+                  className={reviewStyle.radioBarDescriptionContainer}>
                   <p key={`reviewCategory-radioBarContainer-${criterion.id}`}>Legend</p>
                   <div
                     key={`reviewCategory-description-${criterion.id}`}
-                    className={style.radioBarDescription}>
+                    className={reviewStyle.radioBarDescription}>
                     {descriptionElements}
                   </div>
                 </div>}
@@ -80,7 +80,7 @@ export default class ReviewUserCategoryCriteria extends React.Component<Props> {
             </React.Fragment>
           )
         })}
-        <Line className={style.line} />
+        <Line className={reviewStyle.line} />
       </div>
     )
   }

@@ -5,7 +5,7 @@ import App, { Container } from "next/app"
 import Head from "next/head"
 import { getStore } from "../src/store"
 import { SITE_NAME } from "../src/constants/env"
-import "../src/style/style.scss"
+import * as style from "../src/style/style.scss"
 
 export default class extends App {
   static async getInitialProps({ Component, router, ctx }) {
@@ -18,8 +18,8 @@ export default class extends App {
       return {
         ...out,
         pageProps: {
-          ...await Component.getInitialProps(ctx)
-        }
+          ...(await Component.getInitialProps(ctx)),
+        },
       }
     }
 
@@ -31,14 +31,11 @@ export default class extends App {
     const { Component, pageProps } = props
 
     return (
-      <Container>
-        <Head>
-          <title>{SITE_NAME}</title>
-        </Head>
         <Provider store={getStore(undefined, props.server)}>
           <Component {...pageProps} />
         </Provider>
-      </Container>
     )
   }
 }
+
+export { style }

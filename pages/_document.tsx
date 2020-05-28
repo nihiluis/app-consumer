@@ -1,19 +1,16 @@
-import * as React from 'react'
-import Document, { Head, Main, NextScript } from 'next/document'
+import * as React from "react"
+import Document, { Head, Main, NextScript } from "next/document"
 import {
-  DEV, FB_TRACKING_ID, SENTRY_TRACKING_ID, SITE_DESCRIPTION, SITE_IMAGE,
-  SITE_NAME, SITE_TITLE
-} from '../src/constants/env'
+  DEV,
+  FB_TRACKING_ID,
+  SENTRY_TRACKING_ID,
+  SITE_DESCRIPTION,
+  SITE_IMAGE,
+  SITE_NAME,
+  SITE_TITLE,
+} from "../src/constants/env"
 
 export default class extends Document {
-  static async getInitialProps(...args) {
-    const documentProps = await Document.getInitialProps(...args)
-    const { req, renderPage } = args[0]
-    const page = renderPage()
-
-    return { ...documentProps, ...page }
-  }
-
   render() {
     return (
       <html lang="ko">
@@ -32,7 +29,10 @@ export default class extends Document {
           <meta name="twitter:title" content={SITE_TITLE} />
           <meta name="twitter:description" content={SITE_DESCRIPTION} />
           <meta property="twitter:image" content={SITE_IMAGE} />
-          <meta name="format-detection" content="telephone=no, address=no, email=no" />
+          <meta
+            name="format-detection"
+            content="telephone=no, address=no, email=no"
+          />
 
           <link
             rel="stylesheet"
@@ -49,7 +49,7 @@ export default class extends Document {
                 __html: `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window,document,'script', 'https://connect.facebook.net/en_US/fbevents.js');
 
 fbq('init', '${FB_TRACKING_ID}');
-fbq('track', 'PageView'); `
+fbq('track', 'PageView'); `,
               }}
             />
           )}
@@ -66,11 +66,13 @@ fbq('track', 'PageView'); `
             <>
               <script
                 src="https://cdn.ravenjs.com/3.17.0/raven.min.js"
-                {...{ crossOrigin: 'anonymous' }}
+                {...{ crossOrigin: "anonymous" }}
               />
-              <script dangerouslySetInnerHTML={{
-                __html: `Raven.config('https://${SENTRY_TRACKING_ID}@sentry.io/156600').install()`
-              }} />
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `Raven.config('https://${SENTRY_TRACKING_ID}@sentry.io/156600').install()`,
+                }}
+              />
             </>
           )}
         </Head>
@@ -82,4 +84,3 @@ fbq('track', 'PageView'); `
     )
   }
 }
-
