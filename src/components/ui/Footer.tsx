@@ -60,9 +60,6 @@ class Footer extends React.Component<Props> {
               }
             </ul>
           </div>
-          <div className={componentStyle.copyright}>
-            <p>{`© 2019 ${ownerName}`}</p>
-          </div>
         </div>
       </GFooter>
     )

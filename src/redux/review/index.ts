@@ -156,7 +156,7 @@ export function* watchHandleGetOrCreateReviewUser() {
 function* handleGetOrCreateReviewUser(action: any) {
   const { hash, user, review, loadingUserId } = action.payload
 
-  const { res, err } = yield call(
+  const { ok, err } = yield call(
     lazyProtect<AxiosResponse, AxiosError>(
       axios.post(
         `${API_URL}/datahash/review/user/getorcreate`,
@@ -176,7 +176,7 @@ function* handleGetOrCreateReviewUser(action: any) {
     return
   }
 
-  if (res.status != 200) {
+  if (ok.status != 200) {
     yield put(
       actions.getOrCreateReviewUserResponse({
         error: getErrorMessage(err),
@@ -186,7 +186,7 @@ function* handleGetOrCreateReviewUser(action: any) {
     return
   }
 
-  const reviewUser: ReviewUserValueContainer = res.data.data
+  const reviewUser: ReviewUserValueContainer = ok.data.data
   // check if a review already exists
 
   yield put(
@@ -203,7 +203,7 @@ export function* handleSaveReviewUser() {
     const action = yield take(actions.saveReviewUserRequest)
     const { hash, reviewUserId } = action.payload
 
-    const { res, err } = yield call(
+    const { ok, err } = yield call(
       lazyProtect<AxiosResponse, AxiosError>(
         axios.post(
           `${API_URL}/datahash/reviewuser/save`,
@@ -218,12 +218,12 @@ export function* handleSaveReviewUser() {
       continue
     }
 
-    if (res.status != 200) {
+    if (ok.status != 200) {
       yield put(actions.saveReviewUserResponse({ error: getErrorMessage(err) }))
       continue
     }
 
-    const reviewUser: ReviewUserValueContainer = res.data.data
+    const reviewUser: ReviewUserValueContainer = ok.data.data
     // check if a review already exists
 
     yield put(actions.saveReviewUserResponse({ error: "", reviewUser }))
@@ -235,7 +235,7 @@ export function* handleGetReviewCriterionValues() {
     const action = yield take(actions.getReviewCriterionValuesRequest)
     const { hash, reviewUser } = action.payload
 
-    const { res, err } = yield call(
+    const { ok, err } = yield call(
       lazyProtect<AxiosResponse, AxiosError>(
         axios.post(
           `${API_URL}/datahash/review/user/value/get/all`,
@@ -254,7 +254,7 @@ export function* handleGetReviewCriterionValues() {
       continue
     }
 
-    if (res.status != 200) {
+    if (ok.status != 200) {
       yield put(
         actions.getReviewCriterionValuesResponse({
           error: getErrorMessage(err),
@@ -263,7 +263,7 @@ export function* handleGetReviewCriterionValues() {
       continue
     }
 
-    const reviewCriterionValues: ReviewCriterionValue[] = res.data.data
+    const reviewCriterionValues: ReviewCriterionValue[] = ok.data.data
     // check if a review already exists
 
     //TODO
@@ -285,7 +285,7 @@ export function* handleSaveReviewCriterionValues() {
     const reviewUser: ReviewUserValueContainer = action.payload.reviewUser
     const values: ReviewCriterionValueBody[] = action.payload.values
 
-    const { res, err } = yield call(
+    const { ok, err } = yield call(
       lazyProtect<AxiosResponse, AxiosError>(
         axios.post(
           `${API_URL}/datahash/review/user/value/save/all`,
@@ -304,7 +304,7 @@ export function* handleSaveReviewCriterionValues() {
       continue
     }
 
-    if (res.status != 200) {
+    if (ok.status != 200) {
       yield put(
         actions.saveReviewCriterionValuesResponse({
           error: getErrorMessage(err),

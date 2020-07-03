@@ -1,10 +1,14 @@
 import * as React from "react"
 
-import { ReviewUserFormValues } from ".";
+import { ReviewUserFormValues } from "."
 import Criterion from "./Criterion"
 import { Line } from "polyvolve-ui/lib"
 
-import { ReviewCategory, ReviewCriterionType, User } from "polyvolve-ui/lib/@types";
+import {
+  ReviewCategory,
+  ReviewCriterionType,
+  User,
+} from "polyvolve-ui/lib/@types"
 import { reviewStyle } from "../../../lib/reexports"
 
 interface Props {
@@ -17,11 +21,22 @@ interface Props {
   handleBlur: (e: React.FocusEvent<any>) => void
 }
 
-function mapValueToAnnotation(type: ReviewCriterionType, numberOfItems: number): string[] {
+function mapValueToAnnotation(
+  type: ReviewCriterionType,
+  numberOfItems: number
+): string[] {
   // TODO this is currently hardcoded, but should be dynamic later
   if (type === "scale") {
     if (numberOfItems === 7) {
-      return ["Strongly disagree", "Disagree", "Slightly disagree", "Neutral", "Slightly agree", "Agree", "Strongly agree"]
+      return [
+        "Strongly disagree",
+        "Disagree",
+        "Slightly disagree",
+        "Neutral",
+        "Slightly agree",
+        "Agree",
+        "Strongly agree",
+      ]
     }
   }
 
@@ -37,24 +52,28 @@ export default class ReviewUserCategoryCriteria extends React.Component<Props> {
       fieldArrayName,
       user,
       handleChange,
-      handleBlur
+      handleBlur,
     } = this.props
 
-    const descriptionElements: JSX.Element[] = mapValueToAnnotation("scale", 7)
-      .map(name => <p key={`reviewCriterionDescription-${name}`}>{name}</p>)
+    const descriptionElements: JSX.Element[] = mapValueToAnnotation(
+      "scale",
+      7
+    ).map(name => <p key={`reviewCriterionDescription-${name}`}>{name}</p>)
 
-    // TODO this here is tricky and an unsolved design issue. 
-    // where do I put the radio bar description, if the criteria are mixed, 
+    // TODO this here is tricky and an unsolved design issue.
+    // where do I put the radio bar description, if the criteria are mixed,
     // radioBar + association. is that allowed? I'd say no.
     return (
       <div className={reviewStyle.reviewCriterionContainer}>
         <Line className={reviewStyle.line} />
         {category.criteria.map((criterion, idx) => {
-          const isFirstScaleCriterion = criterion.type === "scale" &&
+          const isFirstScaleCriterion =
+            criterion.type === "scale" &&
             (idx === 0 || category.criteria[idx - 1].type !== "scale")
 
           return (
             <React.Fragment key={`criterion-fragment-${criterion.id}`}>
+              {/*
               {isFirstScaleCriterion &&
                 <div
                   key={`reviewCategory-radioBarContainer-${criterion.id}`}
@@ -66,6 +85,7 @@ export default class ReviewUserCategoryCriteria extends React.Component<Props> {
                     {descriptionElements}
                   </div>
                 </div>}
+                 */}
               <Criterion
                 key={`criterion-${criterion.id}`}
                 isLast={idx === category.criteria.length - 1}
@@ -76,7 +96,8 @@ export default class ReviewUserCategoryCriteria extends React.Component<Props> {
                 criterion={criterion}
                 user={user}
                 handleBlur={handleBlur}
-                handleChange={handleChange} />
+                handleChange={handleChange}
+              />
             </React.Fragment>
           )
         })}

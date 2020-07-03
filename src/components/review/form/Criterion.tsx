@@ -56,8 +56,8 @@ export default class ReviewUserCategoryCriterion extends React.Component<
           key={`reviewCriterion-div-${criterion.id}`}
           className={reviewStyle.reviewCriterion}>
           <div>
-            <h3>{criterion.name}</h3>
-            <p>{this.getCriterionDescription()}</p>
+            <h3 className="mb06">{criterion.name}</h3>
+            <h4>{this.getCriterionDescription()}</h4>
           </div>
           <RadioBar
             key={`reviewCriterion-radioBar-${criterion.id}`}

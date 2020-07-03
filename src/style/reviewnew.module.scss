@@ -1,0 +1,25 @@
+@import "vars.scss";
+
+.topContainer {
+	width: 720px;
+	margin: 0 auto;
+}
+
+.reviewedPersonContainer {
+	background-color: $primary-color;
+	padding: 0.8rem;
+	border-radius: 12px;
+	color: $text-light;
+	width: 180px
+}
+
+.reviewedPersonTop {
+	display: grid;
+	grid-template-columns: 32px auto;
+	align-items: center;
+	margin-bottom: 0.2rem;
+}
+
+.reviewedPersonPosition {
+	margin-left: 32px;
+}

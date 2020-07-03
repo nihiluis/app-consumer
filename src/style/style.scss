@@ -3,358 +3,356 @@
 @import "./vars.scss";
 
 html {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *,
 *:before,
 *:after {
-	box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body {
-	color: $text-standard;
-	font-family: $font-family;
-	background-color: $bg-content-diff;
+  color: $text-standard;
+  font-family: $font-family;
+  background-color: $bg-content;
+  background-image: url("/bg.svg");
+  background-size: cover;
 }
 
 h1 {
-	color: #1f3f4b;
-	font-size: 2rem;
-	letter-spacing: 0.6px;
-	font-weight: 700;
+  color: #1f3f4b;
+  font-size: 48px;
+  letter-spacing: 0.6px;
+  font-weight: 700;
 }
 
-h2,h3,h4 {
-	color: #376475;
+h2,
+h3 {
+  color: #376475;
 }
 
 h1,
 h2,
 h3,
 h4 {
-	&.title {
-		text-align: center;
-		letter-spacing: 0.4px;
-	}
+  &.title {
+    text-align: center;
+    letter-spacing: 0.4px;
+  }
 
-	margin-bottom: 0.2rem;
+  margin-bottom: 0.2rem;
 
-	@include color-transition(200ms);
+  @include color-transition(200ms);
 }
 
 h2 {
-	font-size: 20px;
-	font-weight: 700;
-	margin-bottom: 4px;
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 4px;
 }
 
 h3 {
-	font-size: 16px;
-	font-weight: 700;
+  font-size: 36px;
+  font-weight: 700;
 }
 
 h4 {
-	font-size: 14px;
-	font-weight: 700;
+  font-size: 24px;
 }
 
 p {
-	font-size: 0.9rem;
+  font-size: 0.9rem;
 }
 
 a {
-	text-decoration: none;
-	color: $link;
-	cursor: pointer;
+  text-decoration: none;
+  color: $link;
+  cursor: pointer;
 
-	&:hover {
-		color: $link-focus;
-	}
+  &:hover {
+    color: $link-focus;
+  }
 
-	@include color-transition(200ms);
+  @include color-transition(200ms);
 }
 
 strong {
-	font-weight: 700;
+  font-weight: 700;
 }
 
 .pageContent {
-	//background-color: $bg-content-diff;
+  //background-color: $bg-content-diff;
 }
 
 .pageContentWhite {
-	//background-color: $bg-content;
+  //background-color: $bg-content;
 }
 
 .inputGroup {
-	position: relative;
-	display: table;
-	border-collapse: separate;
+  position: relative;
+  display: table;
+  border-collapse: separate;
 
-	.inputItem {
-		display: table-cell;
-		position: relative;
-		float: left;
-		width: 100%;
-		margin-bottom: 0;
-	}
+  .inputItem {
+    display: table-cell;
+    position: relative;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+  }
 
-	.inputItemButton {
-		position: relative;
-		font-size: 0;
-		white-space: nowrap;
-		display: table-cell;
-	}
+  .inputItemButton {
+    position: relative;
+    font-size: 0;
+    white-space: nowrap;
+    display: table-cell;
+  }
 
-	.btn {
-		border-bottom-right-radius: 1.1875rem;
-		border-top-right-radius: 1.1875rem;
-	}
+  .btn {
+    border-bottom-right-radius: 1.1875rem;
+    border-top-right-radius: 1.1875rem;
+  }
 }
 
 label {
-	font-size: 14px;
-	font-weight: 700;
+  font-size: 14px;
+  font-weight: 700;
 }
 
-input[type=text],
-input[type=email],
-input[type=password] {
-	border: 1px solid $border-standard;
-	border-radius: 4px;
-	padding: 1px 8px;
-	color: $text-dark;
-	font-family: $font-family;
-	box-shadow: inset 0 1px 2px rgba(27, 31, 35, 0.075);
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  border: 1px solid $border-standard;
+  border-radius: 4px;
+  padding: 1px 8px;
+  color: $text-dark;
+  font-family: $font-family;
+  box-shadow: inset 0 1px 2px rgba(27, 31, 35, 0.075);
 }
 
 textarea {
-	border: 1px solid $border-standard;
-	border-radius: 4px;
-	padding: 8px;
-	color: $text-standard;
-	font-size: 14px;
-	font-family: $font-family;
+  border: 1px solid $border-standard;
+  border-radius: 4px;
+  padding: 8px;
+  color: $text-standard;
+  font-size: 14px;
+  font-family: $font-family;
 }
 
-:global {
-	.ReactTable {
-		.-btn {
-			text-decoration: none !important;
-			text-transform: none;
-			text-transform: capitalize;
-			color: #fff;
-			border: 0 none;
-			border-radius: 4px;
-			padding: 12px 12px;
-			font-size: 14px;
-			font-weight: 700;
-			line-height: 1.3;
-			justify-content: center;
-			align-items: center;
-			flex: 0 0 160px;
-			display: flex;
-			justify-content: center;
-			overflow: hidden;
-			width: 100%;
-			cursor: pointer;
-			user-select: none;
-			transition: all 200ms ease-in-out;
-			text-align: center;
-			white-space: nowrap;
-			border: 0 none;
-			background-color: $btn-standard;
-			font-family: $font-family;
-			-webkit-appearance: none;
-			-moz-appearance: none;
-			appearance: none;
+.ReactTable {
+  .-btn {
+    text-decoration: none !important;
+    text-transform: none;
+    text-transform: capitalize;
+    color: #fff;
+    border: 0 none;
+    border-radius: 4px;
+    padding: 12px 12px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 160px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    cursor: pointer;
+    user-select: none;
+    transition: all 200ms ease-in-out;
+    text-align: center;
+    white-space: nowrap;
+    border: 0 none;
+    background-color: $btn-standard;
+    font-family: $font-family;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 
-			&:hover:enabled {
-				transition: all 200ms ease;
-				background-color: $btn-hover;
-			}
+    &:hover:enabled {
+      transition: all 200ms ease;
+      background-color: $btn-hover;
+    }
 
-			&:active {
-				transition: all 60ms ease;
-				opacity: .75;
-			}
+    &:active {
+      transition: all 60ms ease;
+      opacity: 0.75;
+    }
 
-			&:focus {
-				//outline: 1px dotted #959595;
-				//outline-offset: -4px;
-				outline: 0;
-			}
+    &:focus {
+      //outline: 1px dotted #959595;
+      //outline-offset: -4px;
+      outline: 0;
+    }
 
-			&:disabled {
-				opacity: .75;
-				cursor: unset;
-			}
-		}
-	}
+    &:disabled {
+      opacity: 0.75;
+      cursor: unset;
+    }
+  }
 }
 
 .lightBox {
-	border: 1px solid rgba(255, 255, 255, .1);
-	padding: 0.6rem;
-	border-radius: 4px;
-	margin: 0.6rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.6rem;
+  border-radius: 4px;
+  margin: 0.6rem 0;
 
-	h4 {
-		text-align: center;
-		font-weight: bold;
+  h4 {
+    text-align: center;
+    font-weight: bold;
 
-		&::after {
-			content: "";
-			display: block;
-			width: 100%;
-			height: 1px;
-			background-color: $bg-content-diff;
-			margin: 10px auto;
-		}
-	}
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 1px;
+      background-color: $bg-content-diff;
+      margin: 10px auto;
+    }
+  }
 }
 
-:global {
-	.btn-standard {
-		text-decoration: none !important;
-		text-transform: none;
-		text-transform: capitalize;
-		color: #fff;
-		border: 0 none;
-		border-radius: 4px;
-		padding: 12px 12px;
-		font-size: 14px;
-		font-weight: 700;
-		line-height: 1.3;
-		justify-content: center;
-		align-items: center;
-		flex: 0 0 160px;
-	}
+.btn-standard {
+  text-decoration: none !important;
+  text-transform: none;
+  text-transform: capitalize;
+  color: #fff;
+  border: 0 none;
+  border-radius: 4px;
+  padding: 12px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 160px;
+}
 
-	.btn {
-		display: flex;
-		justify-content: center;
-		overflow: hidden;
-		width: 100%;
-		cursor: pointer;
-		user-select: none;
-		transition: all 200ms ease-in-out;
-		text-align: center;
-		white-space: nowrap;
-		border: 0 none;
-		background-color: $btn-standard;
-		font-family: $font-family;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-		appearance: none;
+.btn {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  cursor: pointer;
+  user-select: none;
+  transition: all 200ms ease-in-out;
+  text-align: center;
+  white-space: nowrap;
+  border: 0 none;
+  background-color: $primary-color;
+  font-family: $font-family;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 
-		&:hover:enabled {
-			transition: all 200ms ease;
-			background-color: $btn-hover;
-		}
+  &:hover:enabled {
+    transition: all 200ms ease;
+    background-color: $btn-hover;
+  }
 
-		&:active {
-			transition: all 60ms ease;
-			opacity: .75;
-		}
+  &:active {
+    transition: all 60ms ease;
+    opacity: 0.75;
+  }
 
-		&:focus {
-			//outline: 1px dotted #959595;
-			//outline-offset: -4px;
-			outline: 0;
-		}
+  &:focus {
+    //outline: 1px dotted #959595;
+    //outline-offset: -4px;
+    outline: 0;
+  }
 
-		&:disabled {
-			opacity: .75;
-			cursor: unset;
-		}
-	}
+  &:disabled {
+    opacity: 0.75;
+    cursor: unset;
+  }
+}
 
-	.error {
-		color: $error;
-		font-size: 12px;
+.error {
+  color: $error;
+  font-size: 12px;
 
-		&:not(:last-child) {
-			margin-bottom: 0.6rem;
-		}
-	}
+  &:not(:last-child) {
+    margin-bottom: 0.6rem;
+  }
 }
 
 .page {
-	padding-bottom: 1rem;
+  padding-bottom: 1rem;
 }
 
 .title {
-	color: $logo;
+  color: $logo;
 }
 
 .long {
-	color: $long;
+  color: $long;
 }
 
 .short {
-	color: $short;
+  color: $short;
 }
 
 .warn {
-	color: $neutral;
+  color: $neutral;
 }
 
 .updated {
-	color: $active;
+  color: $active;
 }
 
 .flex {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .grouped {
-	display: flex;
+  display: flex;
 
-	div:not(:last-child) {
-		margin-right: 1rem;
-	}
+  div:not(:last-child) {
+    margin-right: 1rem;
+  }
 }
 
 .linksMenu {
-	background-color: #3a3f47;
-	padding: 4px;
-	border-radius: 4px;
-	display: table;
-	margin: 4px auto;
+  background-color: #3a3f47;
+  padding: 4px;
+  border-radius: 4px;
+  display: table;
+  margin: 4px auto;
 
-	a {
-		padding: 4px 12px;
-		outline: 0;
-		line-height: 24px;
-		letter-spacing: 1px;
-	}
+  a {
+    padding: 4px 12px;
+    outline: 0;
+    line-height: 24px;
+    letter-spacing: 1px;
+  }
 }
 
 p.infoText {
-	font-size: 1.1rem;
+  font-size: 1.1rem;
 }
 
 .alignCenter {
-	text-align: center;
+  text-align: center;
 }
 
 .mb06 {
-	margin-bottom: 0.6rem;
+  margin-bottom: 0.6rem;
 }
 
 .mb1 {
-	margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .mt06 {
-	margin-top: 0.6rem;
+  margin-top: 0.6rem;
 }
 
 .mt1 {
-	margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .content {

@@ -78,7 +78,7 @@ export default class ReviewUserFormWrapper extends React.Component<
 
   validate = () => {}
 
-  componentWillMount() {
+  componentDidMount() {
     document.body.addEventListener("keyup", this.handleKeyDown)
   }
 

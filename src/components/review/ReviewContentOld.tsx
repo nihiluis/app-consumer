@@ -18,7 +18,6 @@ import { ReviewActions } from "../../redux/review"
 import { DataGlobalActions } from "../../redux/overview"
 import ReviewUserFormWrapper from "./form"
 import { style, cx, reviewStyle } from "../../lib/reexports"
-import * as reviewNewStyle from "../../style/reviewnew.module.scss"
 
 interface Props {
   loading: boolean
@@ -152,55 +151,117 @@ class ReviewContent extends React.Component<Props> {
       : null
 
     return (
-      <div className={reviewNewStyle.topContainer}>
-        {!reviewUser && !loading && initialized && (
-          <Error>Unable to find users which can be reviewed.</Error>
-        )}
-        {!user && <Error>Unable to find User!</Error>}
-        {user && (
-          <div className={reviewNewStyle.reviewedPersonContainer}>
-            <div className={reviewNewStyle.reviewedPersonTop}>
-              <Avatar
-                url={user.avatar}
-                size={24}
-                className={reviewStyle.miniAvatar}
-                name={user.surname}
-              />
+      <React.Fragment>
+        <div className={style.content}>
+          <Row className={reviewStyle.row}>
+            {!reviewUser && !loading && initialized && (
+              <Error>Unable to find users which can be reviewed.</Error>
+            )}
+            <div className={reviewStyle.reviewIconNavigationBar}>
+              <Link href={`/?id=${hash}`}>
+                <div>
+                  <HomeIcon
+                    size={{ width: 16, height: 16 }}
+                    title="Go back to the start page"
+                  />
+                </div>
+              </Link>
+            </div>
+            <div className={reviewStyle.reviewUserNavigationHeader}>
               <p>
-                <strong>{user.name + " " + user.surname}</strong>
+                <strong>Reviewing</strong>
               </p>
             </div>
-            <p className={reviewNewStyle.reviewedPersonPosition}>
-              {user.position}
-            </p>
-          </div>
-        )}
-        {reviewUser && user && (
-          <div className={style.reviewContainer}>
-            <div className={style.reviewInner}>
-              <Wizard
-                maxPage={schema.categories.length}
-                render={({ page, maxPage }, switchPage) => (
-                  <ReviewUserFormWrapper
-                    hash={hash}
-                    user={user}
-                    reviewUser={reviewUser}
-                    schema={schema}
-                    saveError={saveError}
-                    reviewActions={reviewActions}
-                    users={reviewedUsers}
-                    activeUserIdx={activeUserIdx}
-                    switchUser={this.updateUser}
-                    page={page}
-                    maxPage={maxPage}
-                    switchPage={switchPage}
-                  />
+            <div className={reviewStyle.userNav}>
+              <div className={reviewStyle.next}>
+                {previousUser && (
+                  <div className={reviewStyle.reviewUserNavigation}>
+                    <BackIcon
+                      size={{ width: 16, height: 16 }}
+                      onClick={() => this.updateUser(activeUserIdx - 1)}
+                    />
+                    <Avatar
+                      url={previousUser.avatar}
+                      size={24}
+                      className={reviewStyle.miniAvatar}
+                      name={previousUser.surname}
+                    />
+                    <a>{previousUser.name + " " + previousUser.surname}</a>
+                  </div>
                 )}
-              />
+              </div>
+              <div>
+                <div className={reviewStyle.reviewNavigation}>
+                  <div className={reviewStyle.reviewUserNavigationInfo}>
+                    {!user && <Error>Unable to find User!</Error>}
+                    {user && (
+                      <React.Fragment>
+                        <Avatar
+                          url={user.avatar}
+                          size={24}
+                          className={reviewStyle.miniAvatar}
+                          name={user.surname}
+                        />
+                        <p>{user.name + " " + user.surname}</p>
+                        <p>{user.position}</p>
+                      </React.Fragment>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className={reviewStyle.next}>
+                {nextUser && (
+                  <div
+                    className={cx(
+                      reviewStyle.reviewUserNavigation,
+                      reviewStyle.last
+                    )}>
+                    <Avatar
+                      url={nextUser.avatar}
+                      size={24}
+                      className={reviewStyle.miniAvatar}
+                      name={nextUser.surname}
+                    />
+                    <a>{nextUser.name + " " + nextUser.surname}</a>
+                    <NextIcon
+                      size={{ width: 16, height: 16 }}
+                      onClick={() => this.updateUser(activeUserIdx + 1)}
+                    />
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        )}
-      </div>
+            {reviewUser && user && (
+              <div className={style.reviewContainer}>
+                <div className={style.reviewInner}>
+                  <Wizard
+                    maxPage={schema.categories.length}
+                    render={({ page, maxPage }, switchPage) => (
+                      <ReviewUserFormWrapper
+                        hash={hash}
+                        user={user}
+                        reviewUser={reviewUser}
+                        schema={schema}
+                        saveError={saveError}
+                        reviewActions={reviewActions}
+                        users={reviewedUsers}
+                        activeUserIdx={activeUserIdx}
+                        switchUser={this.updateUser}
+                        page={page}
+                        maxPage={maxPage}
+                        switchPage={switchPage}
+                      />
+                    )}
+                  />
+                </div>
+                <Notification type="hint">
+                  You can use the arrow keys to navigate the wizard.
+                </Notification>
+              </div>
+            )}
+          </Row>
+        </div>
+      </React.Fragment>
     )
   }
 }
